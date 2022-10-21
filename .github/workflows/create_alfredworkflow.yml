@@ -1,0 +1,22 @@
+name: create-alfredworkflow-file
+run-name: Create alfredworkflow file for release ${{ github.ref }}
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: action/checkout@main
+    - name: Archive Release
+      uses: thedoctor0/zip-release@main
+      with:
+        type: 'zip'
+        filename: 'release-${{ github.ref }}.zip'
+        exclusions: '*.git*'
+    - uses: actions/upload-artifact@main
+      with:
+        name: link-opener.alfredworkflow
+        path: link-opener.alfredworkflow
+
+

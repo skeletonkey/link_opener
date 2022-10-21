@@ -147,7 +147,7 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 		<key>49E47331-FA4F-4C25-BB08-BB344B51A6D7</key>
 		<dict>
 			<key>note</key>
-			<string>Please submit issues and feature requests at https://github.com/jsumners/alfred-emoji/issues</string>
+			<string>Please submit issues and feature requests at https://github.com/skeletonkey/link_opener/issues</string>
 			<key>xpos</key>
 			<real>175</real>
 			<key>ypos</key>
