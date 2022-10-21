@@ -12,7 +12,7 @@ jobs:
       uses: thedoctor0/zip-release@main
       with:
         type: 'zip'
-        filename: 'release-${{ github.ref }}.zip'
+        filename: 'link-opener.alfredworkflow'
         exclusions: '*.git*'
     - uses: actions/upload-artifact@main
       with:
