@@ -360,7 +360,7 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.0.8</string>
+	<string>{{VERSION}}</string>
 	<key>webaddress</key>
 	<string>https://github.com/skeletonkey/link_opener</string>
 </dict>
