@@ -1,6 +1,7 @@
 package LinkOpener;
 
 my $repo_data = '.linkopener.dat';
+my $sep = '|';
 
 sub get_repos {
     my %repos = ();
@@ -23,8 +24,16 @@ sub save_data {
     my %data = @_;
     open(my $fh, '>', $repo_data) || die("Unable to open file ($repo_data) for write: $!\n");
     foreach my $name (keys %data) {
-        print $fh join("|", $data{$name}{link}, $data{$name}{name}, $data{$name}{count}) . "\n";
+        print $fh join($sep, $data{$name}{link}, $data{$name}{name}, $data{$name}{count}) . "\n";
     }
+    close($fh);
+}
+
+sub add_url {
+    my ($url, $name) = @_;
+    $name ||= '';
+    open(my $fh, '>>', $repo_data) || die("Unable to open file ($repo_data) for append: $!\n");
+    print $fh join($sep, $url, $name) . "\n";
     close($fh);
 }
 

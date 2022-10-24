@@ -2,6 +2,12 @@
 
 Alfred Workflow to quickly open routine links by a common name.
 
+Why this workflow?  Why not use bookmarks?  Well - sometimes you need to open a link using a name that you know and it's easily served up via other means.  Link Opener allows you to call up these links quickly.
+
+## Requirements
+
+* Perl 5
+
 ## Usage
 
 Bring up Alfred and type `link` and then any part of the link 'name'.
@@ -10,11 +16,4 @@ Results will be sorted first by 'popularity' (how many times you've used it), th
 
 ### Add links
 
-Currently, URLs need to be manually added to `.linkopener.dat` file in Workflow dir.  Simply add a new URL to the bottom of the file.  The 'search term' will be the last part of the URL.  If you want it to be something else then add a '|' with the name. Make sure that the URL *does NOT* end with a '/'.
-
-Examples:
-
-```
-https://github.com/skeletonkey/link_opener
-https://github.com/jsumners/alfred-emoji|Emoji
-```
+Bring up Alfred and type `link add` followed by the link and (optionally) a name that can be used to find the link.  If no 'name' is provided then the last part of the URL is used.
