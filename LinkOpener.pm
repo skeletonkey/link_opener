@@ -8,6 +8,7 @@ sub get_links {
     open(my $fh, '<', $link_data) || die("Unable to open file ($link_data) for read: $!\n");
     while (my $line = <$fh>) {
         chomp($line);
+        next unless $line; # don't process blank lines
         my ($link, $alias, $count) = split(/\|/, $line);
         $links{$link} = {
             link => $link,
@@ -33,7 +34,8 @@ sub add_url {
     my ($url, $name) = @_;
     $name ||= '';
     open(my $fh, '>>', $link_data) || die("Unable to open file ($link_data) for append: $!\n");
-    print $fh join($sep, $url, $name) . "\n";
+    # extra \n incase someone removed the last empty line
+    print $fh "\n" . join($sep, $url, $name) . "\n";
     close($fh);
 }
 
