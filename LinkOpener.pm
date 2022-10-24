@@ -1,15 +1,15 @@
 package LinkOpener;
 
-my $repo_data = '.linkopener.dat';
+my $link_data = '.linkopener.txt';
 my $sep = '|';
 
-sub get_repos {
-    my %repos = ();
-    open(my $fh, '<', $repo_data) || die("Unable to open file ($repo_data) for read: $!\n");
+sub get_links {
+    my %links = ();
+    open(my $fh, '<', $link_data) || die("Unable to open file ($link_data) for read: $!\n");
     while (my $line = <$fh>) {
         chomp($line);
         my ($link, $alias, $count) = split(/\|/, $line);
-        $repos{$link} = {
+        $links{$link} = {
             link => $link,
             name => get_name($link, $alias),
             count => $count || 0,
@@ -17,12 +17,12 @@ sub get_repos {
     }
     close($fh);
 
-    return %repos;
+    return %links;
 }
 
 sub save_data {
     my %data = @_;
-    open(my $fh, '>', $repo_data) || die("Unable to open file ($repo_data) for write: $!\n");
+    open(my $fh, '>', $link_data) || die("Unable to open file ($link_data) for write: $!\n");
     foreach my $name (keys %data) {
         print $fh join($sep, $data{$name}{link}, $data{$name}{name}, $data{$name}{count}) . "\n";
     }
@@ -32,7 +32,7 @@ sub save_data {
 sub add_url {
     my ($url, $name) = @_;
     $name ||= '';
-    open(my $fh, '>>', $repo_data) || die("Unable to open file ($repo_data) for append: $!\n");
+    open(my $fh, '>>', $link_data) || die("Unable to open file ($link_data) for append: $!\n");
     print $fh join($sep, $url, $name) . "\n";
     close($fh);
 }
@@ -50,12 +50,12 @@ sub update_link_count {
     my $link = shift;
 
     my $name = get_name($link);
-    my %repos = get_repos();
+    my %links = get_links();
 
-    return unless exists $repos{$link};
-    $repos{$link}{count}++;
+    return unless exists $links{$link};
+    $links{$link}{count}++;
 
-    save_data(%repos);
+    save_data(%links);
 }
 
 1;
