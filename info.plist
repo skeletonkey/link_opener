@@ -293,7 +293,7 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>{{README}}</string>
 	<key>uidata</key>
 	<dict>
 		<key>09CC996E-CB07-4200-9CF4-6010AA2533F4</key>
