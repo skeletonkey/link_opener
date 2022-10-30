@@ -5,8 +5,13 @@ on:
     types: [created]
 jobs:
   build:
+    name: Build alfredworkflow archive
     runs-on: macos-latest
     steps:
+    - name: Update Version
+      run: |
+        NEW_VERSION=`echo ${{ github.ref }} | cut -d '/' -f 3`; sed -i'.bak' "s/{{VERSION}}/$NEW_VERSION/" info.plist
+        rm info.plist.bak
     - uses: actions/checkout@main
     - name: Archive Release
       uses: thedoctor0/zip-release@main
