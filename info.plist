@@ -293,7 +293,20 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Alfred Workflow to quickly open routine links by a common name.
+
+Please see https://github.com/skeletonkey/link_opener for current information.
+
+Latest release can be found: https://github.com/skeletonkey/link_opener/releases
+
+Requirements
+  - Perl 5
+
+Usage
+  - 'link link_name' - launch URL
+  - 'link add url [link_name]' - save a new url with an optional name
+  - 'link edit' - open the file with link data to delete or edit
+</string>
 	<key>uidata</key>
 	<dict>
 		<key>09CC996E-CB07-4200-9CF4-6010AA2533F4</key>
