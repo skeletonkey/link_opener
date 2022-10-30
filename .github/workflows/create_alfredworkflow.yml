@@ -12,6 +12,8 @@ jobs:
     - name: Update Version
       run: |
         cd $GITHUB_WORKSPACE
+        ls -l
+        pwd
         NEW_VERSION=`echo ${{ github.ref }} | cut -d '/' -f 3`; sed -i'.bak' "s/{{VERSION}}/$NEW_VERSION/" info.plist
         rm info.plist.bak
     - name: Archive Release
