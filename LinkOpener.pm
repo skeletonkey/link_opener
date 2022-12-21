@@ -31,7 +31,8 @@ sub save_data {
 }
 
 sub add_url {
-    my ($url, $name) = @_;
+    my $url = shift;
+    my $name = join(" ", @_);
     $name ||= '';
     open(my $fh, '>>', $link_data) || die("Unable to open file ($link_data) for append: $!\n");
     # extra \n incase someone removed the last empty line
