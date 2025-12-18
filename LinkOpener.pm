@@ -1,6 +1,6 @@
 package LinkOpener;
 
-my $link_data = '.linkopener.txt';
+my $link_data = $ENV{'link_data_file'} || '.linkopener.txt';
 my $sep = '|';
 
 sub get_links {
