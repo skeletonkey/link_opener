@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.jundy.linkopener</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>09CC996E-CB07-4200-9CF4-6010AA2533F4</key>
@@ -143,7 +141,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>l</string>
+				<string>{var:launch_kw}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -190,11 +188,11 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>0</integer>
+				<integer>37</integer>
 				<key>hotmod</key>
-				<integer>0</integer>
+				<integer>1441792</integer>
 				<key>hotstring</key>
-				<string></string>
+				<string>L</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -215,7 +213,7 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
-				<string>link add</string>
+				<string>{var:add_kw}</string>
 				<key>subtext</key>
 				<string>Add URL to Link Opener</string>
 				<key>text</key>
@@ -261,7 +259,7 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 				<key>openwith</key>
 				<string></string>
 				<key>sourcefile</key>
-				<string>.linkopener.txt</string>
+				<string>{var:link_data_file}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openfile</string>
@@ -276,7 +274,7 @@ perl linkopener.pl "$query" 2&gt;&amp;1</string>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>link edit</string>
+				<string>{var:edit_kw}</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
@@ -305,8 +303,7 @@ Requirements
 Usage
   - 'link link_name' - launch URL
   - 'link add url [link_name]' - save a new url with an optional name
-  - 'link edit' - open the file with link data to delete or edit
-</string>
+  - 'link edit' - open the file with link data to delete or edit</string>
 	<key>uidata</key>
 	<dict>
 		<key>09CC996E-CB07-4200-9CF4-6010AA2533F4</key>
@@ -369,7 +366,92 @@ Usage
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>l</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to find URL description and launch the link in the default browser.</string>
+			<key>label</key>
+			<string>Keyword to Open URL</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>launch_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>link add</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to add a new URL and optional description information.</string>
+			<key>label</key>
+			<string>Keyword to Add URL information</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>add_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>link edit</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to open links file in the default text editor.</string>
+			<key>label</key>
+			<string>Keyword to edit existing links</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>edit_kw</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>.linkopener.txt</string>
+				<key>filtermode</key>
+				<integer>0</integer>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Location of the data file for the workflow. Recommended to keep it in the workflow directory (no relative or absolute path) for syncing purposes.</string>
+			<key>label</key>
+			<string>Data File location</string>
+			<key>type</key>
+			<string>filepicker</string>
+			<key>variable</key>
+			<string>link_data_file</string>
+		</dict>
+	</array>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
